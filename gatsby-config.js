@@ -1,17 +1,19 @@
 module.exports = {
+  pathPrefix: `/blog`,
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `terribleI2's blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `terribleI2`,
+      summary: `23区片隅の労働者`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `gatsbyでブログを作ってみる`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    // social: {
+    //   twitter: `kylemathews`,
+    // },
   },
   plugins: [
+    `gatsby-plugin-typegen`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -75,7 +77,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.ma(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
