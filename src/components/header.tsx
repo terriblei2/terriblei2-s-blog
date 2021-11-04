@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Link } from 'gatsby';
+import { StaticImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 
-import AuthorImage from '../images/profile-pic.png';
 import GitHubBrands from '../images/github-brands.svg';
 import TwitterBrands from '../images/twitter-square-brands.svg';
 
@@ -13,16 +13,14 @@ const Root = styled.div`
   height: 48px;
 `;
 
+const TitleWrap = styled.div`
+  display: flex;
+`;
+
 const StyledLink = styled(Link)`
   font-size: 28px;
   text-decoration: none;
   cursor: pointer;
-`;
-
-const AuthorIcon = styled.img`
-  border-radius: 8px;
-  height: 36px;
-  width: 36px;
 `;
 
 const OtherAccountIconWrap = styled.div`
@@ -36,16 +34,23 @@ const OtherAccountIcon = styled.img`
   width: 28px;
 `;
 
-
 export const Header: React.FC = () => {
   return (
     <Root>
-      <div>
-        <AuthorIcon src={AuthorImage} alt='ブロガーアイコン'/>
+      <TitleWrap>
+        <StaticImage
+          layout="fixed"
+          formats={["auto", "webp", "avif"]}
+          src="../images/profile-pic.png"
+          width={36}
+          height={36}
+          quality={95}
+          alt="ブロガーアイコン"
+        />
         <StyledLink to='/'>
           TerribleI2's Blog
         </StyledLink>
-      </div>
+      </TitleWrap>
       <OtherAccountIconWrap>
         <Link to='https://github.com/terriblei2'>
           <OtherAccountIcon src={GitHubBrands} alt='githubアイコン' />
