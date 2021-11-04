@@ -22,6 +22,11 @@
     /* Advanced Options */
 
     /* For gatsby build*/
-    "jsx": "react"
+    "jsx": "react",
+
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    }
   }
 }
