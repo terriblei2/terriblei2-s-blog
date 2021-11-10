@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 
-import GitHubBrands from '../images/github-brands.svg';
-import TwitterBrands from '../images/twitter-square-brands.svg';
+// import GitHubBrands from '../images/github-brands.svg';
+// import TwitterBrands from '../images/twitter-square-brands.svg';
 
 const Root = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ const TitleWrap = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+  font-weight: bold;
   font-size: 28px;
   text-decoration: none;
   cursor: pointer;
@@ -35,6 +36,24 @@ const OtherAccountIcon = styled.img`
 `;
 
 export const Header: React.FC = () => {
+  const data = useStaticQuery<GatsbyTypes.MyQueryQuery>(graphql`
+    query MyQuery {
+      allFile {
+        nodes {
+          name
+          publicURL
+        }
+      }
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+  const blogTitle = data.site?.siteMetadata?.title || `TerribleI2's Blog`;
+  const githubBrands = data.allFile?.nodes.find(({name}) => name === 'github-brands');
+  const twitterSquareBrands = data.allFile?.nodes.find(({name}) => name === 'twitter-square-brands');
   return (
     <Root>
       <TitleWrap>
@@ -48,15 +67,15 @@ export const Header: React.FC = () => {
           alt="ブロガーアイコン"
         />
         <StyledLink to='/'>
-          TerribleI2's Blog
+          {blogTitle}
         </StyledLink>
       </TitleWrap>
       <OtherAccountIconWrap>
         <Link to='https://github.com/terriblei2'>
-          <OtherAccountIcon src={GitHubBrands} alt='githubアイコン' />
+          <OtherAccountIcon src={githubBrands?.publicURL} alt='githubアイコン' />
         </Link>
         <Link to=''>
-          <OtherAccountIcon src={TwitterBrands} alt='twitterアイコン' />
+          <OtherAccountIcon src={twitterSquareBrands?.publicURL} alt='twitterアイコン' />
         </Link>
       </OtherAccountIconWrap>
     </Root>
