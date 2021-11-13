@@ -2,9 +2,14 @@ import * as React from "react";
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-// import GitHubBrands from '../images/github-brands.svg';
-// import TwitterBrands from '../images/twitter-square-brands.svg';
+const iconProps = {
+  color: 'black',
+  width: 28,
+  height: 28
+};
 
 const Root = styled.div`
   display: flex;
@@ -26,24 +31,15 @@ const StyledLink = styled(Link)`
 
 const OtherAccountIconWrap = styled.div`
   display: flex;
-
 `;
 
-const OtherAccountIcon = styled.img`
-  border-radius: 8px;
-  height: 28px;
-  width: 28px;
+const IconLink = styled(Link)`
+  padding-right: 8px;
 `;
 
 export const Header: React.FC = () => {
   const data = useStaticQuery<GatsbyTypes.MyQueryQuery>(graphql`
     query MyQuery {
-      allFile {
-        nodes {
-          name
-          publicURL
-        }
-      }
       site {
         siteMetadata {
           title
@@ -52,8 +48,6 @@ export const Header: React.FC = () => {
     }
   `);
   const blogTitle = data.site?.siteMetadata?.title || `TerribleI2's Blog`;
-  const githubBrands = data.allFile?.nodes.find(({name}) => name === 'github-brands');
-  const twitterSquareBrands = data.allFile?.nodes.find(({name}) => name === 'twitter-square-brands');
   return (
     <Root>
       <TitleWrap>
@@ -71,12 +65,12 @@ export const Header: React.FC = () => {
         </StyledLink>
       </TitleWrap>
       <OtherAccountIconWrap>
-        <Link to='https://github.com/terriblei2'>
-          <OtherAccountIcon src={githubBrands?.publicURL} alt='githubアイコン' />
-        </Link>
-        <Link to='https://twitter.com/terribleI2'>
-          <OtherAccountIcon src={twitterSquareBrands?.publicURL} alt='twitterアイコン' />
-        </Link>
+        <IconLink to='https://github.com/terriblei2'>
+          <FontAwesomeIcon icon={faGithub} {...iconProps} />
+        </IconLink>
+        <IconLink to='https://twitter.com/terribleI2'>
+          <FontAwesomeIcon icon={faTwitter} {...iconProps} />
+        </IconLink>
       </OtherAccountIconWrap>
     </Root>
   );

@@ -3920,6 +3920,6 @@ type BioQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ rea
 type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type MyQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<Pick<File, 'name' | 'publicURL'>> }, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+type MyQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }
