@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-const iconProps = {
+const IconProps = {
   color: 'black',
   width: 28,
   height: 28
@@ -66,10 +66,10 @@ export const Header: React.FC = () => {
       </TitleWrap>
       <OtherAccountIconWrap>
         <IconLink to='https://github.com/terriblei2'>
-          <FontAwesomeIcon icon={faGithub} {...iconProps} />
+          <FontAwesomeIcon icon={faGithub} {...IconProps} />
         </IconLink>
         <IconLink to='https://twitter.com/terribleI2'>
-          <FontAwesomeIcon icon={faTwitter} {...iconProps} />
+          <FontAwesomeIcon icon={faTwitter} {...IconProps} />
         </IconLink>
       </OtherAccountIconWrap>
     </Root>
