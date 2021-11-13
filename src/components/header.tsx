@@ -74,7 +74,7 @@ export const Header: React.FC = () => {
         <Link to='https://github.com/terriblei2'>
           <OtherAccountIcon src={githubBrands?.publicURL} alt='githubアイコン' />
         </Link>
-        <Link to=''>
+        <Link to='https://twitter.com/terribleI2'>
           <OtherAccountIcon src={twitterSquareBrands?.publicURL} alt='twitterアイコン' />
         </Link>
       </OtherAccountIconWrap>

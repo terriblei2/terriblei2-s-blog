@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, PageProps } from "gatsby";
 import styled from 'styled-components';
+import { config } from '@fortawesome/fontawesome-svg-core';
 
 import { Header } from './header';
 
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ location, title, children }) => {
+  config.autoAddCss = false;
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   // const header = isRootPath ? (
